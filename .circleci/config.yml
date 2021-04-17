@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  compile:
+   docker:
+      - image: z4nyx/docker:latest
+   steps:
+      - run:
+          command: |
+           git config --global user.name "flaahokiller"
+           git config --global user.email "flashokiller@gmail.com"
+           git config --global color.ui false
+           git clone https://github.com/flaahokiller/aosp-circle-ci
+           cd aosp-circle-ci
+           bash .circleci/build.sh
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - compile
