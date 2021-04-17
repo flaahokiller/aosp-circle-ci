@@ -18,7 +18,7 @@ apt install \
     maven ncftp ncurses-dev patch patchelf pkg-config pngcrush \
     pngquant python2.7 python-all-dev re2c schedtool squashfs-tools subversion \
     texinfo unzip w3m xsltproc zip zlib1g-dev lzip \
-    libxml-simple-perl apt-utils openjdk \
+    libxml-simple-perl apt-utils \
 
 echo "Repo sync"
 repo init -u https://github.com/PixelExperience/manifest -b eleven
