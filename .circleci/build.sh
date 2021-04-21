@@ -42,24 +42,5 @@ echo "Done"
 . build/envsetup.sh
 echo " BUILD/ENVSETUP.SH CALLED"
 lunch lineage_ysl-userdebug & make bacon -j$(nproc --all)
-
-echo "upload on tg"
-bot_api=1452678314:AAHnlde74WlNYt5jU8DMn3Pp4_1OQH6gsok # Your tg bot api, dont use my one haha, it's better to encrypt bot api too.
-	your_telegram_id=$1 # No need to touch 
-	msg=$2 # No need to touch
-	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=${your_telegram_id}"
-}
-
-id=1028817451 # Your telegram id
-
-# Upload rom zip file if succeed to build! Send notification to tg! And send shell to tg if build fails!
-
-# Let's compile by parts! Coz of ram issue!
-make api-stubs-docs || echo no problem
-make system-api-stubs-docs || echo no problem
-make test-api-stubs-docs || echo no problem
-
-make bacon -j8 \
-	&& send_zip=$(up out/target/product/ysl/*zip) && tg $id "Build Succeed!
-$send_zip" \
-	|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell"
+cd out/target/product/ysl
+curl --upload-file $1 https://transfer.sh/$(basename $1); echo out/target/product/ysl/*zip
