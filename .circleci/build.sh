@@ -13,7 +13,7 @@ sudo apt-get install -y adb autoconf automake axel bc bison build-essential ccac
 echo "Repo sync"
 repo init -u git://github.com/LineageOS/android.git -b lineage-18.1
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-
+cls
 echo "Cloning dependencies"
 git clone --depth=1 https://github.com/flaahokiller/android_device_xiaomi_ysl device/xiaomi/ysl
 git clone --depth=1 1https://github.com/ItsVixano/android_vendor_xiaomi_ysl vendor/xiaomi/ysl
@@ -35,8 +35,9 @@ cd ../../.
 cd vendor
 rm -rf msm8953-common/proprietary/system_ext/framework/qti-telephony-common.jar
 cd ..
+
 echo "Done"
 
 . build/envsetup.sh
 echo " BUILD/ENVSETUP.SH CALLED"
-lunch aosp_ysl-eng & mka bacon -j$(nproc --all)
+lunch lineage_ysl-user & make bacon -j$(nproc --all)
