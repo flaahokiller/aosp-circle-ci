@@ -24,8 +24,7 @@ cd ..
 
 echo -e "sync"
 
-repo init -u https://github.com/PixelExperience/manifest -b eleven
-
+repo init -u git://github.com/LineageOS/android.git -b lineage-18.1
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
 echo "Cloning dependencies"
@@ -44,6 +43,6 @@ echo "Done"
 
 . build/envsetup.sh
 
-lunch aosp_ysl-userdebug
+lunch lineage_ysl-user
 
-mka bacon -j9
+mka bacon -j(nproc-all)
