@@ -17,8 +17,8 @@ repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 cls
 echo "Cloning dependencies"
 git clone --depth=1 https://github.com/flaahokiller/android_device_xiaomi_ysl device/xiaomi/ysl
-git clone --depth=1 1https://github.com/ItsVixano/android_vendor_xiaomi_ysl vendor/xiaomi/ysl
-git clone --depth=1 https://github.com/flaahokiller/flasho_Ysl -b MaD kernel/xiaomi/ysl
+git clone --depth=1 https://github.com/ItsVixano/android_vendor_xiaomi_ysl vendor/xiaomi/ysl
+git clone --depth=1 https://github.com/stormbreaker-project/kernel_xiaomi_ysl.git -b eleven kernel/xiaomi/ysl
 
 echo "-------------- Installing scripts----------------"
 git clone https://github.com/dustxyz/scripts
@@ -32,7 +32,7 @@ rm -rf hardware/qcom-caf/msm8996/media hardware/qcom-caf/msm8996/audio hardware/
 echo "fixing qti"
 cd device/xiaomi/ysl
 rm -rf overlay/packages/services/Telephony/res/xml/telephony_injection.xml
-cd ../../.
+cd ../../
 cd vendor
 rm -rf msm8953-common/proprietary/system_ext/framework/qti-telephony-common.jar
 cd ..
