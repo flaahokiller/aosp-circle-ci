@@ -18,3 +18,4 @@ workflows:
   cooking:
     jobs:
       - compile
+      - run
