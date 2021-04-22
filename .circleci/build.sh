@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Repo sync"
-repo init -u https://github.com/PotatoProject/manifest -b dumaloo-release
+repo init -u  https://github.com/ZenX-OS/android_manifest.git -b 11.1
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 clear -x
 echo "Cloning dependencies"
@@ -24,11 +24,12 @@ rm -rf overlay/packages/services/Telephony/res/xml/telephony_injection.xml
 cd ../../
 cd vendor
 rm -rf msm8953-common/proprietary/system_ext/framework/qti-telephony-common.jar
-cd ..
-
+cd 
+cd lineage
 echo "Done"
 
 . build/envsetup.sh
 echo " BUILD/ENVSETUP.SH CALLED"
+export SELINUX_IGNORE_NEVERALLOWS=true
 lunch potato_ysl-userdebug & make bacon -j$(nproc --all)
 curl --upload-file $1 https://transfer.sh/$(basename $1); echo out/target/product/ysl/*zip
