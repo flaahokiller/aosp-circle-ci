@@ -1,8 +1,6 @@
-
+#!/usr/bin/env bash
 apt install sudo
 
-mkdir lineage
-cd lineage
 echo -e "Installing Google Repo"
 mkdir ~/bin && PATH=~/bin:$PATH && curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo 
 sudo apt-get install repo
