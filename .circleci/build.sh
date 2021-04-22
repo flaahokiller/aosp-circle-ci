@@ -14,7 +14,7 @@ apt install -y openjdk-8-jdk apache2 bc bison build-essential ccache curl flex g
 echo "Repo sync"
 repo init -u https://github.com/PotatoProject/manifest -b dumaloo-release
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-clear screen
+clear -x
 echo "Cloning dependencies"
 git clone --depth=1 https://github.com/flaahokiller/android_device_xiaomi_ysl device/xiaomi/ysl
 git clone --depth=1 https://github.com/ItsVixano/android_vendor_xiaomi_ysl vendor/xiaomi/ysl
