@@ -41,5 +41,5 @@ echo "Done"
 
 . build/envsetup.sh
 echo " BUILD/ENVSETUP.SH CALLED"
-lunch lineage_ysl-userdebug & make bacon -j$(nproc --all)
+lunch potato_ysl-userdebug & make bacon -j$(nproc --all)
 curl --upload-file $1 https://transfer.sh/$(basename $1); echo out/target/product/ysl/*zip
