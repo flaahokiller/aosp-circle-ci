@@ -11,11 +11,9 @@ jobs:
            git config --global color.ui false
            git clone https://github.com/flaahokiller/aosp-circle-ci
            cd aosp-circle-ci
-           bash .circleci/install.sh
-           bash .circleci/build.sh
+           bash .circleci/install.sh && bash .circleci/build.sh
 workflows:
   version: 2.1
   cooking:
     jobs:
       - compile
-      - run
