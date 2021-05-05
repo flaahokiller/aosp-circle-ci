@@ -4,6 +4,7 @@ jobs:
    docker:
       - image: z4nyx/docker:latest
    steps:
+      - storeartifacts
       - run:
           command: |
            git config --global user.name "flaahokiller"
